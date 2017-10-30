@@ -4,6 +4,3 @@ class tirage extends jeu
 {
 }
 
-class participant
-{
-}
