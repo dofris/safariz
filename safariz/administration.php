@@ -1,0 +1,1 @@
+http://localhost/TPactu/image/bouilloire.jpg
