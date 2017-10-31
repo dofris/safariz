@@ -56,11 +56,11 @@ class connectionadmin
         $this->mdp = $mdp;
     }
 
-    public function identification(){
-        $requete = $this->db->prepare('SELECT mdp FROM admin WHERE login = :log');
-        $requete->bindValue(':log',  $this->username);
-        $requete->execute();
-        
+    public function identification($user){
+        $requete = $this->bdd->prepare("SELECT * FROM admin WHERE login = '$user' and mdp = '$this->mdp'");
+     //   $requete->bindValue(':log',  $this->username);
+       $news= $requete->execute();
+       var_dump($news);
        
         
         $news = $requete->fetch();

@@ -4,17 +4,17 @@ function __autoload($class_name) {
     include $class_name . '.php';
 }
 
-__autoload(connectionadmin);
+__autoload("connectionadmin");
 
 $user= $_POST['login'];
 $mdp = $_POST['mot_de_passe'];
 $approuve= new connectionadmin($user, $mdp);
-$valide = $approuve->identification();
+$valide = $approuve->identification($user);
 if ($valide ==false){
-    header("C:\xampp\htdocs\eclipse\safariz\safariz\administration.html");
-    
-}
-else {
+    header("Location : ../administration.html");
+    exit();
+}else {
+    var_dump($valide);
     echo("lol");
     
 }
