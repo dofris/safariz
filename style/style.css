@@ -1,0 +1,33 @@
+body{
+   background-image: url("../img/safari.jpg");
+   
+}
+p{
+    text-align:center;
+}
+ btn .btn-default{
+    text-align:center;
+}
+.form{
+    background:#9F8049;
+    width:80%;
+    padding:2%;
+    
+}
+ 
+
+footer{
+    width:100%;
+    height:10%;
+   
+}
+footer a{
+    float: right;
+    padding:2%;
+    text-decoration:none;
+     font-size:150%;
+    
+    
+}
+
+
