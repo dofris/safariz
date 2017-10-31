@@ -6,12 +6,24 @@ class connectionadmin
     
     private $username;
     private $mdp;
+    private $bdd;
     
-   function  __construct($user, $pd, BDD $bd){
+   function  __construct($user, $pd){
        $this->mdp=$pd;
        $this->username=$user;
+       
+           // $dbname="mysql:host=localhost;dbname=".$dbname;
+           //$this->driver ="mysql:host=localhost;dbname=$dbname;charset=utf8";
+           try {
+               $this->bdd = new PDO( "mysql:host=localhost;dbname=safariz;charset=utf8", 'root', '' );
+               
+           } catch(Exception $e) {
+               die('Erreur : '. $e->getMessage());
+           }
+           
+       }
         
-    }
+    
     /**
      * @return the $username
      */
@@ -44,14 +56,14 @@ class connectionadmin
         $this->mdp = $mdp;
     }
 
-    public function identification($user, $mdp, $bd){
-        $requete = $this->db->prepare('SELECT mdp FROM admin WHERE login = :mdp');
-        $requete->bindValue(':log', (int) $user);
+    public function identification(){
+        $requete = $this->db->prepare('SELECT mdp FROM admin WHERE login = :log');
+        $requete->bindValue(':log',  $this->username);
         $requete->execute();
         
        
         
-        $news = $requete->fetch(0);
+        $news = $requete->fetch();
         
                 if ($mdp = $news){
                     return true;
