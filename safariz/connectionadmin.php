@@ -56,7 +56,10 @@ class connectionadmin
                 if ($mdp = $news){
                     return true;
                 }
-        return $news;
+                
+                else {
+                    return false;
+                }
     }
         
     }
