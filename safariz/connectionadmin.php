@@ -7,7 +7,7 @@ class connectionadmin
     private $username;
     private $mdp;
     
-   function  __construct($user, $pd){
+   function  __construct($user, $pd, BDD $bd){
        $this->mdp=$pd;
        $this->username=$user;
         
@@ -44,9 +44,24 @@ class connectionadmin
         $this->mdp = $mdp;
     }
 
+    public function identification($user, $mdp, $bd){
+        $requete = $this->db->prepare('SELECT mdp FROM admin WHERE login = :mdp');
+        $requete->bindValue(':log', (int) $user);
+        $requete->execute();
+        
+       
+        
+        $news = $requete->fetch(0);
+        
+                if ($mdp = $news){
+                    return true;
+                }
+        return $news;
+    }
+        
+    }
     
     
     
-    
-}
+
 
