@@ -11,12 +11,15 @@ $mdp = $_POST['mot_de_passe'];
 $approuve= new connectionadmin($user, $mdp);
 $valide = $approuve->identification($user);
 if ($valide ==false){
-    header("Location : ../administration.html");
-    exit();
-}else {
+    header("Location: ./administration.html");
+    echo("lol");}
+
+else {
     var_dump($valide);
-    echo("lol");
     
+    echo("lol");
+    header("Location: ./backoffice.php");
+    exit();
 }
 
 
