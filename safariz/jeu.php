@@ -4,6 +4,9 @@ class jeu
 {
     private  $datedebut;
     private  $datefin;
+    
+    
+    
     /**
      * @return the $datedebut
      */
@@ -11,7 +14,7 @@ class jeu
     {
         return $this->datedebut;
     }
-
+    //UTILISA-MLJN0FO
     /**
      * @return the $datefin
      */
