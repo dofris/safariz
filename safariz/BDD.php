@@ -1,17 +1,15 @@
  <?php
 
-class BDD extends PDO
+class BDD 
 {
-    private $utilisateur='root';
-    private $motDePasse='';
-    private $driver;
     private $bdd;
     // private $bdd;
-    public function __construct($dbname) {
+    public function __construct() {
         // $dbname="mysql:host=localhost;dbname=".$dbname;
         //$this->driver ="mysql:host=localhost;dbname=$dbname;charset=utf8";
         try {
-            $this->bdd = new PDO( "mysql:host=localhost;dbname=safariz;charset=utf8", 'root', '' );
+           $this->bdd = new PDO( "mysql:host=localhost;dbname=safariz;charset=utf8", 'root', '' );
+           
             
         } catch(Exception $e) {
             die('Erreur : '. $e->getMessage());
@@ -21,7 +19,7 @@ class BDD extends PDO
     
     public function requete($requete) {
         $tg = $this->bdd->query($requete) or exit(print_r($this->bdd->errorInfo()));
-        echo $tg;
+        return $tg;
     }
     
     public function fetchAll($resultat) {
@@ -41,5 +39,37 @@ class BDD extends PDO
         return $resultat->closeCursor();
     }  
     
-}
-
+   public function nbrParticipant(){
+        $requete = $this->bdd->prepare("SELECT count(*) FROM PARTICIPANT");
+        $req =  $requete->execute();
+        $reponse = $req->fetchAll();
+        if ($req == 0) {
+            echo "Le nombre de participant est de 0";
+        } else {
+            echo "Le nombre de participant est de " . $requete;
+        }
+    }
+    
+    
+    //Nombre de gagnant
+    public function nbrGagnant(){
+        $gagnant = "SELECT COUNT(*)FROM GAGNER";
+        //echo " Le nombre de gagnant est de ".$gagnant;
+        $ngagnant = $this->bdd->query($gagnant);
+        echo  $ngagnant->fetchAll();
+        $ngagnant->fetchAll();
+        return $ngagnant;
+    }
+    
+    //Nombre total de lot
+   public function nbrLot(){
+        $lot = "SELECT COUNT(*) FROM LOT";
+        $nlot = $this->bdd->query($lot)
+        ;
+        //echo " Il y a ".$lot." lots au départ du jeu";
+        var_dump($nlot->fetchAll())  ;
+        return $nlot;
+        
+    }
+    
+}  
