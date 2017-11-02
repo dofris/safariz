@@ -1,9 +1,7 @@
 <?php
 
 class connectionadmin
-{
-    
-    
+{ 
     private $username;
     private $mdp;
     
