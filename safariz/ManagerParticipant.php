@@ -27,8 +27,7 @@ class ManagerParticipant {
         $this->dbname = $dbname;
     }
 
-    //fonction qui enregistre un participant
-      
+    //fonction qui enregistre un participant      
     public function ajouP(Participant $part){
         $add = $this->dbname->prepare("INSERT INTO `participant`(`NOM`, `PRENOM`, `TELEPHONE`, `ADRESSE`, `CODEPOSTAL`, `VILLE`, `EMAIL`) "
                 . "VALUES ( :nom, :pnom, :tel, :adr, :codep, :ville, :email)");

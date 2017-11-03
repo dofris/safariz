@@ -7,21 +7,21 @@ class BDD extends PDO
     private $driver;
     private $bdd;
     // private $bdd;
+    
     public function __construct($dbname) {
         // $dbname="mysql:host=localhost;dbname=".$dbname;
         //$this->driver ="mysql:host=localhost;dbname=$dbname;charset=utf8";
         try {
-            $this->bdd = new PDO( "mysql:host=localhost;dbname=safariz;charset=utf8", 'root', '' );
+            $this->bdd = new PDO( "mysql:host=localhost;dbname=safariz;charset=utf8", 'root', 'root' );
             
         } catch(Exception $e) {
             die('Erreur : '. $e->getMessage());
-        }
-        
+        }        
     }
     
     public function requete($requete) {
-        $tg = $this->bdd->query($requete) or exit(print_r($this->bdd->errorInfo()));
-        echo $tg;
+        $valide = $this->bdd->query($requete) or exit(print_r($this->bdd->errorInfo()));
+        echo $valide;
     }
     
     public function fetchAll($resultat) {
